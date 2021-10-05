@@ -20,7 +20,7 @@ export class LoginUserController {
       `SELECT * FROM USERS WHERE USERNAME = $1 LIMIT 1`,
       [username]
     );
-    
+
     if (!rows[0]) {
       return response.status(401).end();
     }
@@ -35,7 +35,7 @@ export class LoginUserController {
     const token = sign({}, process.env.JWT_SECRET, {
       subject: user.id,
     });
-  
+
     await setRedis(`user-${user.id}`, JSON.stringify(user));
 
     return response.json(token);

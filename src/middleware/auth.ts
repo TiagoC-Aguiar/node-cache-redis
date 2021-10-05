@@ -4,7 +4,7 @@ import { verify, decode } from 'jsonwebtoken';
 export async function authentication(
   request: Request,
   response: Response,
-  next: NextFunction,
+  next: NextFunction
 ) {
   const authHeader = request.headers.authorization;
 
@@ -21,7 +21,7 @@ export async function authentication(
     request.userId = String(userId);
 
     return next();
-  } catch(err) {
+  } catch (err) {
     console.log('error: ', err);
     return response.status(401).end();
   }

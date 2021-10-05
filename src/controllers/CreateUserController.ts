@@ -5,7 +5,7 @@ import { createConnection } from '../postgres';
 
 export class CreateUserController {
   async handle(request: Request, response: Response) {
-    const { username, name, password } = request.body; 
+    const { username, name, password } = request.body;
 
     const clientConnection = await createConnection();
 
@@ -31,4 +31,3 @@ export class CreateUserController {
     return response.send();
   }
 }
-
